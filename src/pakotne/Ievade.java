@@ -1,11 +1,10 @@
 package pakotne;
 
-import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
 public class Ievade {
-	static Scanner scan = new Scanner(System.in);
 	static int studSk, kritSk;
 	static String[] studenti;
 	static String[] kriteriji;
@@ -13,19 +12,44 @@ public class Ievade {
 	static int[][] kriterijaVertejums;
 	static double[] semestraVertejums;
 	
+	static String virknesParbaude(String zinojums) {
+		String virkne;
+		do {
+			virkne = JOptionPane.showInputDialog(zinojums);
+			if(virkne == null)
+				return null;
+		}while(!Pattern.matches("^[\\p{L} .]+$", virkne));
+		return virkne;
+	}
+	public static int skaitlaParbaude(String zinojums, int min) {
+		String ievade;
+		int skaitlis;
+		while(true) {
+			ievade = JOptionPane.showInputDialog(null, zinojums, 
+					"Datu ievade", JOptionPane.INFORMATION_MESSAGE); 
+			if(ievade == null)
+				return -1;
+			try {
+				skaitlis = Integer.parseInt(ievade);
+				if(skaitlis < min) {
+					JOptionPane.showMessageDialog(null, 
+					"Norādīts nederīgs intervāls", "Nekorekti dati",
+					JOptionPane.WARNING_MESSAGE);
+					continue;
+				}
+				
+				return skaitlis;
+			}catch(NumberFormatException e) {
+				JOptionPane.showMessageDialog(null,
+					"Netika ievadīts vesels skaitlis", "Nekorekti dati",
+					JOptionPane.WARNING_MESSAGE);
+			}
+		}
+	}
 	// Audzēkņu skaita ievade
 	static void Audzekni() {
 		do {
-			JOptionPane.showInputDialog(null, 
-				"Cik studentiem aprēķināsi gala vērtējumu?","Ievade",
-				JOptionPane.QUESTION_MESSAGE);
-			while(!scan.hasNextInt()) {
-				JOptionPane.showInputDialog(null, 
-						"Cik studentiem aprēķināsi gala vērtējumu?","Ievade",
-						JOptionPane.QUESTION_MESSAGE);
-				scan.next();
-			}
-			studSk = scan.nextInt();
+			studSk = skaitlaParbaude("Cik studentiem aprēķināsi gala vērtējumu?", 1);
 		}while(studSk<1);
 		studenti = new String[studSk];
 	}
@@ -33,34 +57,20 @@ public class Ievade {
 	// Vērtēšanas kritēriju skaita ievade
 	static void Vertesana() {
 		do {
-			JOptionPane.showInputDialog(null, 
-					"Kāds būs kritēriju skaits?","Ievade",
-					JOptionPane.QUESTION_MESSAGE);
-			while(!scan.hasNextInt()) {
-				JOptionPane.showInputDialog(null, 
-						"Kāds būs kritēriju skaits?","Ievade",
-						JOptionPane.QUESTION_MESSAGE);
-				scan.next();
-			}
-			kritSk = scan.nextInt();
+			kritSk = skaitlaParbaude("Cik studentiem aprēķināsi gala vērtējumu?", 1);
 		}while(kritSk<1);
-		String[] kriteriji = new String[kritSk];
-		int[] kriterijaSvars = new int[kritSk];
-		int[][] kriterijaVertejums = new int[studSk][kritSk];
-		double[] semestraVertejums = new double[studSk];
 		
-		scan.nextLine();
-		
+		kriteriji = new String[kritSk];
+		kriterijaSvars = new int[kritSk];
+		kriterijaVertejums = new int[studSk][kritSk];
+		semestraVertejums = new double[studSk];
 	}
 	
 	// Ievada audzēkņu vārdus, uzvārdus
 	static void Vardi() {
 		for(int i=0; i<studenti.length; i++) {
 			do {
-				JOptionPane.showInputDialog(null, 
-						"Ievadi "+(i+1)+". studentu","Ievade",
-						JOptionPane.QUESTION_MESSAGE);
-				studenti[i] = scan.nextLine().trim();
+				studenti [i] = virknesParbaude("Ievadi "+(i+1)+". studentu");
 			} while(!studenti[i].matches("^[\\p{L} ]+$"));
 		}
 	}

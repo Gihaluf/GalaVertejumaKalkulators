@@ -1,0 +1,11 @@
+Studenta Dans vērtējums par kritēriju Maten ir 2, kura svars ir 100
+Semestra vērtējums ir 2 balles
++++++++++++++++++++++++++++++++++++++++++++++++++Studenta Dans vērtējums par kritēriju Maten ir 8, kura svars ir 60
+Semestra vērtējums ir 6.8 balles
++++++++++++++++++++++++++++++++++++++++++++++++++Studenta Dans vērtējums par kritēriju anglen ir 5, kura svars ir 40
+Semestra vērtējums ir 6.8 balles
++++++++++++++++++++++++++++++++++++++++++++++++++Studenta Arturs vērtējums par kritēriju Maten ir 10, kura svars ir 60
+Semestra vērtējums ir 6.4 balles
++++++++++++++++++++++++++++++++++++++++++++++++++Studenta Arturs vērtējums par kritēriju anglen ir 1, kura svars ir 40
+Semestra vērtējums ir 6.4 balles
++++++++++++++++++++++++++++++++++++++++++++++++++

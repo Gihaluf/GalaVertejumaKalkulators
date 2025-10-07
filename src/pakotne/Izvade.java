@@ -18,17 +18,16 @@ public class Izvade {
 			for(int i=0; i<Ievade.studenti.length; i++) {	
 				for(int j=0; j<Ievade.kriteriji.length; j++) {
 					Ieraksta(i, j);
-					JOptionPane.showInputDialog(null, 
+					JOptionPane.showMessageDialog(null, 
 							"Studenta "+Ievade.studenti[i]+" vērtējums par kritēriju "+Ievade.kriteriji[j]+" ir "+Ievade.kriterijaVertejums[i][j]+", kura svars ir "+Ievade.kriterijaSvars[j],
 							"Izvade",
 							JOptionPane.QUESTION_MESSAGE);
 				}
-				JOptionPane.showInputDialog(null, 
+				JOptionPane.showMessageDialog(null, 
 						"Semestra vērtējums ir "+GalvenaKlase.df.format(Ievade.semestraVertejums[i])+" balles",
 						"Izvade",
 						JOptionPane.QUESTION_MESSAGE);
 			}
-			GalvenaKlase.scan.close();
 		}
 	static void Ieraksta(int i, int j) {
 		try {
@@ -36,7 +35,7 @@ public class Izvade {
 			PrintWriter pw = new PrintWriter(fw);
 			pw.println("Studenta "+Ievade.studenti[i]+" vērtējums par kritēriju "+Ievade.kriteriji[j]+" ir "+Ievade.kriterijaVertejums[i][j]+", kura svars ir "+Ievade.kriterijaSvars[j]);
 			pw.println("Semestra vērtējums ir "+GalvenaKlase.df.format(Ievade.semestraVertejums[i])+" balles");
-			pw.print("+++++++++++++++++++++++++++++++++++++++++++++++++");
+			pw.println("+++++++++++++++++++++++++++++++++++++++++++++++++");
 			pw.close();
 		}catch(IOException e) {
 			JOptionPane.showMessageDialog(null, "Nesaglabā failā", "Kļūda",

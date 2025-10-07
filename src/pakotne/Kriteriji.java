@@ -1,11 +1,6 @@
 package pakotne;
 
-import java.util.Scanner;
-
-import javax.swing.JOptionPane;
-
 public class Kriteriji {
-	static Scanner scan = new Scanner(System.in);
 	static int maxSvars, sk;
 	static double atlSvars;
 	
@@ -14,25 +9,11 @@ public class Kriteriji {
 		maxSvars = 100;
 		sk = 1;
 			for(int i=0; i<Ievade.kriteriji.length; i++) {
-				do {
-					JOptionPane.showInputDialog(null, 
-							"Ievadi "+(i+1)+". kritēriju","Ievade",
-							JOptionPane.QUESTION_MESSAGE);
-					Ievade.kriteriji[i] = scan.nextLine().trim();
-				} while(!Ievade.kriteriji[i].matches("^[\\p{L} ]+$"));
-				
+				Ievade.kriteriji[i] = Ievade.virknesParbaude("Ievadi "+(i+1)+". kritēriju");
+					 
 				// Norāda katra kritērija svaru
 				do {
-					JOptionPane.showInputDialog(null, 
-							"Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")","Ievade",
-							JOptionPane.QUESTION_MESSAGE);
-					while(!scan.hasNextInt()) {
-						JOptionPane.showInputDialog(null, 
-								"Ievadi "+(i+1)+". kritērija svaru","Ievade",
-								JOptionPane.QUESTION_MESSAGE);
-						scan.next();
-					}
-					Ievade.kriterijaSvars[i] = scan.nextInt();
+					Ievade.kriterijaSvars[i] = Ievade.skaitlaParbaude("Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")", 5);
 					/* Minimālā KATRA ATLIKUŠĀ kritērija svars ir 5
 					 * kopējai svaru vērtībai ir jābūt 100 (ne mazāk, ne vairāk)
 					*/
@@ -43,7 +24,6 @@ public class Kriteriji {
 					  || atlSvars < 5);
 				maxSvars -= Ievade.kriterijaSvars[i];
 				sk++;
-				scan.nextLine();
 			}
 	}
 	static void vert() {
@@ -51,16 +31,9 @@ public class Kriteriji {
 		for(int i=0; i<Ievade.kriterijaVertejums.length; i++) {
 			for(int j=0; j<Ievade.kriterijaVertejums[i].length; j++) {
 				do {
-					JOptionPane.showInputDialog(null, 
-							"Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j],"Ievade",
-							JOptionPane.QUESTION_MESSAGE);
-					while(!scan.hasNextInt()) {
-						JOptionPane.showInputDialog(null, 
-								"Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j],"Ievade",
-								JOptionPane.QUESTION_MESSAGE);
-						scan.next();
-					}
-					Ievade.kriterijaVertejums[i][j] = GalvenaKlase.scan.nextInt();
+					Ievade.kriterijaVertejums[i][j] = 
+							Ievade.skaitlaParbaude("Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j], 1);
+						
 				}while(Ievade.kriterijaVertejums[i][j]<0 || Ievade.kriterijaVertejums[i][j]>10);
 			}
 		}

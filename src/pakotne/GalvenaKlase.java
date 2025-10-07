@@ -1,12 +1,10 @@
 package pakotne;
 
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
 public class GalvenaKlase {
-	public static Scanner scan = new Scanner(System.in);
 	public static DecimalFormat df = new DecimalFormat("0.#");
 	
 	public static void main(String[] args) {
@@ -30,9 +28,7 @@ public class GalvenaKlase {
 			switch(izvele) {
 			case "1":
 				Ievade.Audzekni();
-				System.out.println("Pirms");
 				Ievade.Vardi();
-			    System.out.println("Otr");
 				break;
 			case "2":
 				Ievade.Vertesana();
@@ -43,15 +39,15 @@ public class GalvenaKlase {
 				break;
 			case "4":
 				//nav
-				Labot(1);
+				//Labot(1);
 				break;
 			case "5":
 				//nav
-				Labot(2);
+				//Labot(2);
 				break;
 			case "6":
 				//nav
-				Labot(3);
+				//Labot(3);
 				break;
 			case "7":
 				Kriteriji.Aprekins();
@@ -65,6 +61,8 @@ public class GalvenaKlase {
 			}
 		}while(!izvele.equalsIgnoreCase("x"));
 	}
+	
+	/*
 	static void Labot(int sk) {
 		switch (sk) {
 		case 1:
@@ -86,5 +84,5 @@ public class GalvenaKlase {
 					JOptionPane.QUESTION_MESSAGE);
 			break;
 	}
-}
+}*/
 }
