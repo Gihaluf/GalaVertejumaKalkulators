@@ -51,7 +51,6 @@ public class GalvenaKlase {
 			case "Nolasīt no faila":
 				break;
 			}
-			if(izvele.equalsIgnoreCase("Apturēt")) break;
 		}
 	}
 }

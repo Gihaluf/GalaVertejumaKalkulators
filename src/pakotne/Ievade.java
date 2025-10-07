@@ -61,4 +61,24 @@ public class Ievade {
 			} while(!studenti[i].matches("^[\\p{L} ]+$"));
 		}
 	}
+	// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
+	static void Vertejums() {
+		for(int i=0; i<Ievade.kriterijaVertejums.length; i++) {
+			for(int j=0; j<Ievade.kriterijaVertejums[i].length; j++) {
+				do {
+					JOptionPane.showInputDialog(null, 
+							"Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j],"Ievade",
+							JOptionPane.QUESTION_MESSAGE);
+					while(!GalvenaKlase.scan.hasNextInt()) {
+						JOptionPane.showInputDialog(null, 
+								"Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j],"Ievade",
+								JOptionPane.QUESTION_MESSAGE);
+						GalvenaKlase.scan.next();
+					}
+					Ievade.kriterijaVertejums[i][j] = GalvenaKlase.scan.nextInt();
+				}while(Ievade.kriterijaVertejums[i][j]<0 || Ievade.kriterijaVertejums[i][j]>10);
+			}
+		}
+	}
+
 }
