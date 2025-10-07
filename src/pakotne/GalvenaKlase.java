@@ -4,28 +4,12 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class GalvenaKlase {
+	public static Scanner scan = new Scanner(System.in);
+	public static DecimalFormat df = new DecimalFormat("0.#");
+	
 	public static void main(String[] args) {
-		int studSk, kritSk;
-		Scanner scan = new Scanner(System.in);
-		DecimalFormat df = new DecimalFormat("0.#");
 		
-		// Ievada audzēkņu vārdus, uzvārdus
-		for(int i=0; i<studenti.length; i++) {
-			do {
-				System.out.println("Ievadi "+(i+1)+". studentu");
-				studenti[i] = scan.nextLine().trim();
-			} while(!studenti[i].matches("^[\\p{L} ]+$"));
-		}
 		
-		// Definē kritērijus
-		int maxSvars = 100, sk = 1;
-		double atlSvars;
-		for(int i=0; i<kriteriji.length; i++) {
-			do {
-				System.out.println("Ievadi "+(i+1)+". kritēriju");
-				kriteriji[i] = scan.nextLine().trim();
-			} while(!kriteriji[i].matches("^[\\p{L} ]+$"));
-			
 			// Norāda katra kritērija svaru
 			do {
 				System.out.println("Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")");
@@ -33,12 +17,12 @@ public class GalvenaKlase {
 					System.out.println("Ievadi "+(i+1)+". kritērija svaru");
 					scan.next();
 				}
-				kriterijaSvars[i] = scan.nextInt();
+				Ievade.kriterijaSvars[i] = scan.nextInt();
 				/* Minimālā KATRA ATLIKUŠĀ kritērija svars ir 5
 				 * kopējai svaru vērtībai ir jābūt 100 (ne mazāk, ne vairāk)
 				*/
-				atlSvars = (maxSvars - kriterijaSvars[i]) / (double)(kriteriji.length - sk);
-			} while(kriterijaSvars[i]>maxSvars || kriterijaSvars[i]<5 || 
+				atlSvars = (maxSvars - Ievade.kriterijaSvars[i]) / (double)(Ievade.kriteriji.length - sk);
+			} while(Ievade.kriterijaSvars[i]>maxSvars || kriterijaSvars[i]<5 || 
 				  (i != kriteriji.length-1 && kriterijaSvars[i] == maxSvars) ||
 				  (i == kriteriji.length-1 && (maxSvars - kriterijaSvars[i])  > 0) 
 				  || atlSvars < 5);

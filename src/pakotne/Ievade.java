@@ -1,17 +1,14 @@
 package pakotne;
 
-import java.util.Scanner;
-
 import javax.swing.JOptionPane;
 
 public class Ievade {
-	public static Scanner scan = new Scanner(System.in);
-	public static int studSk, kritSk;
-	public static String []studenti = null;
-	public static String[] kriteriji = null;
-	public static int[] kriterijaSvars = null;
-	public static int[][] kriterijaVertejums = null;
-	public static double[] semestraVertejums = null;
+	static int studSk, kritSk;
+	static String []studenti = null;
+	static String[] kriteriji = null;
+	static int[] kriterijaSvars = null;
+	static int[][] kriterijaVertejums = null;
+	static double[] semestraVertejums = null;
 	
 	// Audzēkņu skaita ievade
 	static void Audzekni() {
@@ -19,13 +16,13 @@ public class Ievade {
 			JOptionPane.showInputDialog(null, 
 				"Cik studentiem aprēķināsi gala vērtējumu?","Ievade",
 				JOptionPane.QUESTION_MESSAGE);
-			while(!scan.hasNextInt()) {
+			while(!GalvenaKlase.scan.hasNextInt()) {
 				JOptionPane.showInputDialog(null, 
 						"Cik studentiem aprēķināsi gala vērtējumu?","Ievade",
 						JOptionPane.QUESTION_MESSAGE);
-				scan.next();
+				GalvenaKlase.scan.next();
 			}
-			studSk = scan.nextInt();
+			studSk = GalvenaKlase.scan.nextInt();
 		}while(studSk<1);
 		String[] studenti = new String[studSk];
 	}
@@ -36,20 +33,20 @@ public class Ievade {
 			JOptionPane.showInputDialog(null, 
 					"Kāds būs kritēriju skaits?","Ievade",
 					JOptionPane.QUESTION_MESSAGE);
-			while(!scan.hasNextInt()) {
+			while(!GalvenaKlase.scan.hasNextInt()) {
 				JOptionPane.showInputDialog(null, 
 						"Kāds būs kritēriju skaits?","Ievade",
 						JOptionPane.QUESTION_MESSAGE);
-				scan.next();
+				GalvenaKlase.scan.next();
 			}
-			kritSk = scan.nextInt();
+			kritSk = GalvenaKlase.scan.nextInt();
 		}while(kritSk<1);
 		String[] kriteriji = new String[kritSk];
 		int[] kriterijaSvars = new int[kritSk];
 		int[][] kriterijaVertejums = new int[studSk][kritSk];
 		double[] semestraVertejums = new double[studSk];
 		
-		scan.nextLine();
+		GalvenaKlase.scan.nextLine();
 		
 	}
 	
@@ -60,7 +57,7 @@ public class Ievade {
 				JOptionPane.showInputDialog(null, 
 						"Ievadi "+(i+1)+". studentu","Ievade",
 						JOptionPane.QUESTION_MESSAGE);
-				studenti[i] = scan.nextLine().trim();
+				studenti[i] = GalvenaKlase.scan.nextLine().trim();
 			} while(!studenti[i].matches("^[\\p{L} ]+$"));
 		}
 	}
