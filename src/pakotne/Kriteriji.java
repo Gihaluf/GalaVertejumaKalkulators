@@ -1,8 +1,11 @@
 package pakotne;
 
+import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 
 public class Kriteriji {
+	static Scanner scan = new Scanner(System.in);
 	static int maxSvars, sk;
 	static double atlSvars;
 	
@@ -15,7 +18,7 @@ public class Kriteriji {
 					JOptionPane.showInputDialog(null, 
 							"Ievadi "+(i+1)+". kritēriju","Ievade",
 							JOptionPane.QUESTION_MESSAGE);
-					Ievade.kriteriji[i] = GalvenaKlase.scan.nextLine().trim();
+					Ievade.kriteriji[i] = scan.nextLine().trim();
 				} while(!Ievade.kriteriji[i].matches("^[\\p{L} ]+$"));
 				
 				// Norāda katra kritērija svaru
@@ -23,13 +26,13 @@ public class Kriteriji {
 					JOptionPane.showInputDialog(null, 
 							"Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")","Ievade",
 							JOptionPane.QUESTION_MESSAGE);
-					while(!GalvenaKlase.scan.hasNextInt()) {
+					while(!scan.hasNextInt()) {
 						JOptionPane.showInputDialog(null, 
 								"Ievadi "+(i+1)+". kritērija svaru","Ievade",
 								JOptionPane.QUESTION_MESSAGE);
-						GalvenaKlase.scan.next();
+						scan.next();
 					}
-					Ievade.kriterijaSvars[i] = GalvenaKlase.scan.nextInt();
+					Ievade.kriterijaSvars[i] = scan.nextInt();
 					/* Minimālā KATRA ATLIKUŠĀ kritērija svars ir 5
 					 * kopējai svaru vērtībai ir jābūt 100 (ne mazāk, ne vairāk)
 					*/
@@ -40,7 +43,7 @@ public class Kriteriji {
 					  || atlSvars < 5);
 				maxSvars -= Ievade.kriterijaSvars[i];
 				sk++;
-				GalvenaKlase.scan.nextLine();
+				scan.nextLine();
 			}
 	}
 	static void vert() {
@@ -51,11 +54,11 @@ public class Kriteriji {
 					JOptionPane.showInputDialog(null, 
 							"Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j],"Ievade",
 							JOptionPane.QUESTION_MESSAGE);
-					while(!GalvenaKlase.scan.hasNextInt()) {
+					while(!scan.hasNextInt()) {
 						JOptionPane.showInputDialog(null, 
 								"Ievadi "+Ievade.studenti[i]+" vērtējumu par kritēriju "+Ievade.kriteriji[j],"Ievade",
 								JOptionPane.QUESTION_MESSAGE);
-						GalvenaKlase.scan.next();
+						scan.next();
 					}
 					Ievade.kriterijaVertejums[i][j] = GalvenaKlase.scan.nextInt();
 				}while(Ievade.kriterijaVertejums[i][j]<0 || Ievade.kriterijaVertejums[i][j]>10);

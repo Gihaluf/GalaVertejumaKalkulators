@@ -11,7 +11,7 @@ public class GalvenaKlase {
 	
 	public static void main(String[] args) {
 		String izvele;
-		while(true) {
+		do{
 			izvele = (String) JOptionPane.showInputDialog(null,
 					"Izvēle\n"
 					+ "1-Ievadīt audzēķņus\n"
@@ -28,33 +28,63 @@ public class GalvenaKlase {
 					JOptionPane.QUESTION_MESSAGE);
 			if(izvele == null) break;
 			switch(izvele) {
-			case "Ievadīt audzēķņus":
+			case "1":
 				Ievade.Audzekni();
+				System.out.println("Pirms");
 				Ievade.Vardi();
+			    System.out.println("Otr");
 				break;
-			case "Ievadīt kritētrijus":
+			case "2":
 				Ievade.Vertesana();
 				Kriteriji.Svars();
 				break;
-			case "Ievadīt vērtējumu":
+			case "3":
 				Kriteriji.vert();
-			case "Labot kritēriju":
 				break;
-			case "Labot kritērija svaru":
+			case "4":
+				//nav
+				Labot(1);
 				break;
-			case "Labot iegūto vertējumu":
+			case "5":
+				//nav
+				Labot(2);
 				break;
-			case "Aprēķināt gala vērtējumu":
+			case "6":
+				//nav
+				Labot(3);
+				break;
+			case "7":
 				Kriteriji.Aprekins();
 				break;
-			case "Saglabāt rezultātus failā":
+			case "8":
 				Izvade.Izvada();
 				break;
-			case "Nolasīt no faila":
+			case "9":
 				Izvade.nolasit();
 				break;
 			}
-			if(izvele.equalsIgnoreCase("x") || izvele==null) break;
-		}
+		}while(!izvele.equalsIgnoreCase("x"));
 	}
+	static void Labot(int sk) {
+		switch (sk) {
+		case 1:
+		JOptionPane.showInputDialog(null,
+				"Kuru kritēriju vēlaties izlabot?"
+				+Ievade.kriteriji, "Izvēle",
+				JOptionPane.QUESTION_MESSAGE);
+		break;
+		case 2:
+			JOptionPane.showInputDialog(null,
+					"Kuru kritērija svaru vēlaties izlabot?\n"
+					+Ievade.kriterijaSvars, "Izvēle",
+					JOptionPane.QUESTION_MESSAGE);
+			break;
+		case 3:
+			JOptionPane.showInputDialog(null,
+					"Kuru vērtējumu vēlaties izlabot?"
+					+Ievade.kriterijaVertejums, "Izvēle",
+					JOptionPane.QUESTION_MESSAGE);
+			break;
+	}
+}
 }
