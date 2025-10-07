@@ -43,4 +43,16 @@ public class Kriteriji {
 				GalvenaKlase.scan.nextLine();
 		}
 	}
+	// Gala vērtējuma aprēķināšana
+	static void Aprekins() {
+
+				double rezultats;
+				for(int i=0; i<Ievade.studenti.length; i++) {
+					rezultats=0;
+					for(int j=0; j<Ievade.kriteriji.length; j++) {
+						rezultats += ((double) Ievade.kriterijaSvars[j]/100)*Ievade.kriterijaVertejums[i][j];
+					}
+					Ievade.semestraVertejums[i] = rezultats;
+				}
+	}
 }
