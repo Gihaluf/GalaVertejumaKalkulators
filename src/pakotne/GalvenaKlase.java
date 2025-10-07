@@ -9,28 +9,6 @@ public class GalvenaKlase {
 	
 	public static void main(String[] args) {
 		
-		
-			// Norāda katra kritērija svaru
-			do {
-				System.out.println("Ievadi "+(i+1)+". kritērija svaru (max: "+maxSvars+")");
-				while(!scan.hasNextInt()) {
-					System.out.println("Ievadi "+(i+1)+". kritērija svaru");
-					scan.next();
-				}
-				Ievade.kriterijaSvars[i] = scan.nextInt();
-				/* Minimālā KATRA ATLIKUŠĀ kritērija svars ir 5
-				 * kopējai svaru vērtībai ir jābūt 100 (ne mazāk, ne vairāk)
-				*/
-				atlSvars = (maxSvars - Ievade.kriterijaSvars[i]) / (double)(Ievade.kriteriji.length - sk);
-			} while(Ievade.kriterijaSvars[i]>maxSvars || kriterijaSvars[i]<5 || 
-				  (i != kriteriji.length-1 && kriterijaSvars[i] == maxSvars) ||
-				  (i == kriteriji.length-1 && (maxSvars - kriterijaSvars[i])  > 0) 
-				  || atlSvars < 5);
-			maxSvars -= kriterijaSvars[i];
-			sk++;
-			scan.nextLine();
-		}
-		
 		// Norāda vērtējumu kādu ieguvis katrs audzēknis par katru kritēriju
 		for(int i=0; i<kriterijaVertejums.length; i++) {
 			for(int j=0; j<kriterijaVertejums[i].length; j++) {
