@@ -52,4 +52,16 @@ public class Ievade {
 		scan.nextLine();
 		
 	}
+	
+	// Ievada audzēkņu vārdus, uzvārdus
+	static void Vardi() {
+		for(int i=0; i<studenti.length; i++) {
+			do {
+				JOptionPane.showInputDialog(null, 
+						"Ievadi "+(i+1)+". studentu","Ievade",
+						JOptionPane.QUESTION_MESSAGE);
+				studenti[i] = scan.nextLine().trim();
+			} while(!studenti[i].matches("^[\\p{L} ]+$"));
+		}
+	}
 }
