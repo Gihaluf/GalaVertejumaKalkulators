@@ -9,22 +9,6 @@ public class GalvenaKlase {
 		Scanner scan = new Scanner(System.in);
 		DecimalFormat df = new DecimalFormat("0.#");
 		
-		// Vērtēšanas kritēriju skaita ievade
-		do {
-			System.out.println("Kāds būs kritēriju skaits?");
-			while(!scan.hasNextInt()) {
-				System.out.println("Kāds būs kritēriju skaits?");
-				scan.next();
-			}
-			kritSk = scan.nextInt();
-		}while(kritSk<1);
-		String[] kriteriji = new String[kritSk];
-		int[] kriterijaSvars = new int[kritSk];
-		int[][] kriterijaVertejums = new int[studSk][kritSk];
-		double[] semestraVertejums = new double[studSk];
-		
-		scan.nextLine();
-		
 		// Ievada audzēkņu vārdus, uzvārdus
 		for(int i=0; i<studenti.length; i++) {
 			do {
