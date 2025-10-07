@@ -14,18 +14,19 @@ public class GalvenaKlase {
 		while(true) {
 			izvele = (String) JOptionPane.showInputDialog(null,
 					"Izvēle\n"
-					+ "Ievadīt audzēķņus\n"
-					+ "Ievadīt kritētrijus\n"
-					+ "Ievadīt vērtējumu\n"
-					+ "Labot kritēriju\n"
-					+ "Labot kritērija svaru\n"
-					+ "Labot iegūto vertējumu\n"
-					+ "Aprēķināt gala vērtējumu\n"
-					+ "Saglabāt rezultātus failā\n"
-					+ "Nolasīt no faila\n"
-					+ "Apturēt",
+					+ "1-Ievadīt audzēķņus\n"
+					+ "2-Ievadīt kritētrijus\n"
+					+ "3-Ievadīt vērtējumu\n"
+					+ "4-Labot kritēriju\n"
+					+ "5-Labot kritērija svaru\n"
+					+ "6-Labot iegūto vertējumu\n"
+					+ "7-Aprēķināt gala vērtējumu\n"
+					+ "8-Saglabāt rezultātus failā\n"
+					+ "9-Nolasīt no faila\n"
+					+ "x-Apturēt",
 					"Izvēle",
 					JOptionPane.QUESTION_MESSAGE);
+			if(izvele == null) break;
 			switch(izvele) {
 			case "Ievadīt audzēķņus":
 				Ievade.Audzekni();
@@ -47,10 +48,13 @@ public class GalvenaKlase {
 				Kriteriji.Aprekins();
 				break;
 			case "Saglabāt rezultātus failā":
+				Izvade.Izvada();
 				break;
 			case "Nolasīt no faila":
+				Izvade.nolasit();
 				break;
 			}
+			if(izvele.equalsIgnoreCase("x") || izvele==null) break;
 		}
 	}
 }
